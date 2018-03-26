@@ -1,0 +1,38 @@
+{
+    "standard" : {
+        "start" : "<script>",
+        "end" : "</script>"
+    },
+    "img" : {
+        "start" : "<img src=javascript:",
+        "end" : ">"
+    },
+    "img_tab" : {
+        "start" : "<img src=javas    cript:",
+        "end" : ">"
+    },
+    "img_embedded_tab" : {
+        "start" : "<img src=javas&#x0A;cript:",
+        "end" : ">"
+    },
+    "img_error": {
+        "start" : "<img src=\/ onerror=",
+        "end" : ">"
+    },
+    "single_quotes": {
+        "start": "'",
+        "end":"'"
+    },
+    "double_quotes": {
+        "start": "\"",
+        "end":"\""
+    },
+    "backtick": {
+        "start": "`",
+        "end":"`"
+    },
+    "none":{
+        "start":"",
+        "end":""
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "standard":{
+        "start":"{{",
+        "end":"}}"
+    }, 
+    "none": {
+        "start":"",
+        "end":""
+    }
+}
