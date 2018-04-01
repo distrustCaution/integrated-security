@@ -4,19 +4,8 @@
   "description": "Make security part of your integration tests!",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
-    "start": "node index.js",
-    "example": "node -e \"var example = require('./test/example_server/example_server'); example.start(8000)\"",
-    "unitTest": "mocha --reporter spec \"test/unit_tests/**/*.js\"",
-    "exampleTest": "mocha --reporter spec \"test/example_server/test/*.js\"",
-    "integrationTest": "mocha --reporter spec \"test/integration_tests/*.js\"",
-    "uiTest": "mocha --reporter spec \"test/integration_tests/test_ui.js\"",
-    "apiTest": "mocha --reporter spec \"test/integration_tests/test_api.js\"",
-    "demoAuthz": "mocha --reporter spec \"test/demo_tests/*authz.js\"",
-    "demoXSS": "mocha --reporter spec \"test/demo_tests/*xss.js\"",
-    "demoAngularInjection": "mocha --reporter spec \"test/demo_tests/*angular_injection.js\"",
-    "demoExternalScript": "mocha --reporter spec \"test/demo_tests/*external_scripts.js\"",
-    "demoSqli": "mocha --reporter spec \"test/demo_tests/*sqli.js\""
+    "test": "mocha --reporter spec \"test/**/*.js\"",
+    "start": "node index.js"
   },
   "author": "morgan roman",
   "license": "MIT",
@@ -25,8 +14,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "chromedriver": "^2.21.2",
-    "mocha": "^5.0.0",
-    "selenium-webdriver": "^4.0.0-alpha.1"    
+    "jsdoc": "^3.5.5",
+    "mocha": "^5.0.0"
   }
 }

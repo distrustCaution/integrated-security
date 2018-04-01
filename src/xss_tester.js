@@ -6,7 +6,15 @@ var defaultBasePayload = function(str){
     return "console.error("+str+")";
 }
 
-
+/**
+ * Builds an xss search object
+ * @constructor
+ * @param {*} name 
+ * @param {*} breakout 
+ * @param {*} useName 
+ * @param {*} maxLength 
+ * @param {*} basePayload 
+ */
 function xssTest(name,breakout,useName,maxLength,basePayload){
     //set up
     this.name = name ? name : base.randomString(maxLength);
@@ -25,6 +33,10 @@ function xssTest(name,breakout,useName,maxLength,basePayload){
     }
 }
 
+/**
+ * Gets the logs out of the web driver
+ * @param {*} driver - Web driver object 
+ */
 var getLogs = async function(driver){
     return await driver.manage().logs().get(webdriver.logging.Type.BROWSER);
 }

@@ -2,7 +2,15 @@ var sha1 = require('sha1');
 
 const commonLength = 5; //default 5 length
 
-function baseTester(myCreate,myVerify,myBeforeAll){
+/**
+ * Represents a tester object
+ * @constructor
+ * @param {function} myCreate - The constructor that creates your payloads 
+ * @param {function} myVerify - The verify function that returns a boolean
+ * @param {function} myBeforeAll - Function to run before all 
+ * @param {string} myConfigFile 
+ */
+function baseTester(myCreate,myVerify,myBeforeAll,myConfigFile){
 
     this.payloads = []; 
 
@@ -31,6 +39,10 @@ function baseTester(myCreate,myVerify,myBeforeAll){
     }
 }
 
+/**
+ * Returns a (non-cryptographically secure) random string
+ * @param {number=} [len=5] - length of desired number 
+ */
 baseTester.randomString = function(len){
     if(!len) len = commonLength; 
     var text = "";
@@ -42,6 +54,10 @@ baseTester.randomString = function(len){
     return text;
 }
 
+/**
+ * Returns a (non-cryptographically secure) random number as a string
+ * @param {number=} [len=5] - length of desired number 
+ */
 baseTester.randomNumber = function(len){
     if(!len) len = commonLength; 
     var text = "";
@@ -53,6 +69,11 @@ baseTester.randomNumber = function(len){
     return text;
 }
 
+/**
+ * Turns a string into a numeric hash, then cuts down the numeric hash to a short length to output to a string
+ * @param {string} str - The string you can key off of
+ * @param {number=} [maxLen=5] - The maximum length of the string 
+ */
 baseTester.numHash = function(str, maxLen){
     var strHash = sha1(str);
     if(!maxLen) maxLen = commonLength;
@@ -70,12 +91,22 @@ baseTester.numHash = function(str, maxLen){
 	return output.slice(0,maxLen);
 }
 
+/**
+ * Returns a function that will append the start and end to a string. This is useful for building breakout sequences.
+ * @param {string} start 
+ * @param {string} end 
+ */
 baseTester.buildBreakout = function(start, end){
     return function(str){
         return start + str + end;
     }
 }
 
+/**
+ * Handles a list of breakouts
+ * @param {string=|Function=} breakout 
+ * @param {Object} config 
+ */
 baseTester.breakoutConfigHandler = function(breakout, config){
     if(!breakout){
         var standard = "standard";
@@ -89,6 +120,10 @@ baseTester.breakoutConfigHandler = function(breakout, config){
     }
 }
 
+/**
+ * Helper function that turns garbage into a true boolean 
+ * @param {*=} useName 
+ */
 baseTester.useNameHandler = function(useName){
     if(useName == null){
         return true; //use it by default

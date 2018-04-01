@@ -1,12 +1,14 @@
 const base = require('./base_tester');
 const breakoutConfig = require('./config/angularBreakouts.json')
-
+/**
+ * Builds the most basic payload using a multiplier
+ * @param {number} num 
+ */
 var buildPayload = function(num){
     return num+"*"+num;
 }
 
 var angularInjection = function(name, breakout, useName, maxLength, maxNumLength){
-    
     this.name = name ? name : base.randomString(maxLength);
     if(!maxNumLength) maxNumLength = 2; // usually use 2 digit numbers
     this.number = base.numHash(this.name, maxNumLength);
