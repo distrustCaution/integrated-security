@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 let server = require('../example_server/example_server');
 
 var requestPromise = require('request-promise');
-var angularInjection = require('../../angular_tester');
+var angularInjection = require('../../src/angular_tester');
 
 var capabilities = {
     'browserName': 'chrome',

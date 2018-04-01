@@ -1,7 +1,7 @@
 'use strict'
 
 var expect = require('chai').expect;
-var angular = require('../../angular_tester');
+var angular = require('../../src/angular_tester');
 
 describe('angular tester unit tests',function(){
 

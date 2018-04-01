@@ -19,9 +19,9 @@ var proxyUri = "http://localhost:8080"
 // var r = request.defaults({'proxy':proxyUri});
 
 //with proxy 
-var r = requestPromise.defaults({'proxy':proxyUri});
+// var r = requestPromise.defaults({'proxy':proxyUri});
 //without proxy 
-// var r = requestPromise;
+var r = requestPromise;
 
 describe("API", function(){
     before(async function(){

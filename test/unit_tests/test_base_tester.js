@@ -1,7 +1,7 @@
 'use strict'
 
 var expect = require('chai').expect;
-var base_tester = require('../../base_tester');
+var base_tester = require('../../src/base_tester');
 
 describe('base_tester helper functions', function(){
     it('should give me a random string of n length',function(){

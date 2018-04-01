@@ -1,4 +1,4 @@
-var integratedSecurity = require('../../index');
+var integratedSecurity = require('../../src/index');
 var expect = require('chai').expect;
 
 describe('integrated security', function(){

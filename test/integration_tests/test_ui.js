@@ -28,14 +28,14 @@ var sleep = function(ms) {
 }
 
 //with proxy 
-var r = requestPromise.defaults({'proxy':proxyUri});
+// var r = requestPromise.defaults({'proxy':proxyUri});
 //without proxy 
-// var r = requestPromise;
+var r = requestPromise;
 
 async function createDriver() {
    var driver = new webdriver.Builder()
-    //    .withCapabilities(webdriver.Capabilities.chrome()) //without proxy
-       .withCapabilities(capabilities) // with proxy
+       .withCapabilities(webdriver.Capabilities.chrome()) //without proxy
+    //    .withCapabilities(capabilities) // with proxy
        .build();
    return driver;
 }      

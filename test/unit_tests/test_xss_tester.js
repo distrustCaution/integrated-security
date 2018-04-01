@@ -1,8 +1,8 @@
 'use strict'
 
 var expect = require('chai').expect;
-var xss = require('../../xss_tester');
-var xssConfig = require('../../config/xssBreakouts.json');
+var xss = require('../../src/xss_tester');
+var xssConfig = require('../../src/config/xssBreakouts.json');
 
 describe('xss tester unit tests',function(){
 

@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 let server = require('../example_server/example_server');
 
 var requestPromise = require('request-promise');
-var xssTester = require('../../xss_tester');
+var xssTester = require('../../src/xss_tester');
 
 var capabilities = {
     'browserName': 'chrome',
