@@ -1,5 +1,5 @@
 {
-  "name": "integrated_security",
+  "name": "integrated-security",
   "version": "0.0.1",
   "description": "Make security part of your integration tests!",
   "main": "index.js",
