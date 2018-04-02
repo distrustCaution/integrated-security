@@ -9,8 +9,8 @@ var defaultBasePayload = function(str){
 /**
  * Builds an xss search object
  * @constructor
- * @param {*} name 
- * @param {*} breakout 
+ * @param {string} name 
+ * @param {string} breakout 
  * @param {*} useName 
  * @param {*} maxLength 
  * @param {*} basePayload 

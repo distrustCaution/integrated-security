@@ -1,7 +1,7 @@
 'use strict'
 
 var expect = require('chai').expect;
-var xss = require('../../src/xss_tester');
+var xss = require('../../src/index').xss;
 var xssConfig = require('../../src/config/xssBreakouts.json');
 
 describe('xss tester unit tests',function(){
@@ -18,7 +18,7 @@ describe('xss tester unit tests',function(){
         var first = xss.create();
         expect(typeof first).to.equal('string');
         expect(xss.payloads.length).to.equal(1);
-        expect(first.indexOf('console.log') != -1).to.equal(true);
+        expect(first).to.contain('console.error');
     });
 
     it('should start with the name by default', function(){

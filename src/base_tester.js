@@ -7,10 +7,9 @@ const commonLength = 5; //default 5 length
  * @constructor
  * @param {function} myCreate - The constructor that creates your payloads 
  * @param {function} myVerify - The verify function that returns a boolean
- * @param {function} myBeforeAll - Function to run before all 
- * @param {string} myConfigFile 
+ * @param {function} myBeforeAll - Function to run before all other verificationss
  */
-function baseTester(myCreate,myVerify,myBeforeAll,myConfigFile){
+function baseTester(myCreate,myVerify,myBeforeAll){
 
     this.payloads = []; 
 
@@ -26,8 +25,14 @@ function baseTester(myCreate,myVerify,myBeforeAll,myConfigFile){
     }
 
     var beforeAll = this.beforeAll = myBeforeAll ? myBeforeAll : async function(resource){ return resource; }
-
-    this.verify = async function(resource){
+    
+    /**
+     * Verifies that the injection exists  
+     * @param {*} resource - Usually the web driver object
+     * @param {bool|Function=} onError - If this exists, it will reject on error or execute on the results (this is good for putting assertions in)
+     * @returns {Promise<*[]>} - It will return an array of payloads
+     */
+    this.verify = async function(resource, onError){
         var fullResource = await beforeAll(resource);
         var result = [];
         for (var item in this.payloads){
@@ -35,7 +40,16 @@ function baseTester(myCreate,myVerify,myBeforeAll,myConfigFile){
                 result.push(this.payloads[item]);
             }
         }
-        return result;
+
+        if(onError && result.length > 0) {
+            if (typeof onError == 'function'){
+                return onError(result);
+            } else {
+                return new Promise.reject(result);                
+            }
+        } else {
+            return result;
+        }
     }
 }
 

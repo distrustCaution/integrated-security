@@ -7,7 +7,12 @@
     "test": "mocha --reporter spec \"test/**/*.js\"",
     "start": "node index.js"
   },
-  "author": "morgan roman",
+  "repository" :
+  { 
+    "type" : "git", 
+    "url" : "https://github.com/distrustCaution/integrated-security.git"
+  },
+  "author": "distrustCaution",
   "license": "MIT",
   "dependencies": {
     "sha1": "^1.1.1"

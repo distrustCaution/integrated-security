@@ -63,9 +63,9 @@ describe('base_tester helper functions', function(){
 
 });
 
-describe('base_tester constructor',function(){
+describe('base_tester constructor',async function(){
 
-    it('should be able to create a tester object correctly without a before all function', function(){
+    it('should be able to create a tester object correctly without a before all function', async function(){
         var create = function(name){
             this.payload = name; // must have the payload object
             this.name = name;
@@ -82,22 +82,23 @@ describe('base_tester constructor',function(){
         var firstPayload = baseTester.create(firstString);
         expect(firstPayload).to.equal(firstString);
         expect(baseTester.payloads.length).to.equal(1);
-        expect(baseTester.verify(firstString+secondString).length).to.equal(1); //expect it to find one error
-        expect(baseTester.verify("foobar").length).to.equal(0); //expect it to find none
+
+        expect((await baseTester.verify(firstString+secondString)).length).to.equal(1); //expect it to find one error
+        expect((await baseTester.verify("foobar")).length).to.equal(0); //expect it to find none
 
         var secondPayload = baseTester.create(secondString);
         expect(secondPayload).to.equal(secondString);
         expect(baseTester.payloads.length).to.equal(2);
-        expect(baseTester.verify(firstString+secondString).length).to.equal(2); //expect it to find two errors
-        expect(baseTester.verify("adsfadsfadsfads"+firstString).length).to.equal(1); //expect it to find one errors
-        expect(baseTester.verify("foobar").length).to.equal(0); //expect it to find none
+        expect((await baseTester.verify(firstString+secondString)).length).to.equal(2); //expect it to find two errors
+        expect((await baseTester.verify("adsfadsfadsfads"+firstString)).length).to.equal(1); //expect it to find one errors
+        expect((await baseTester.verify("foobar")).length).to.equal(0); //expect it to find none
         
         baseTester.clear();
         expect(baseTester.payloads.length).to.equal(0);
         
     });
     
-    it('should be able to create a tester object correctly with a before all function', function(){
+    it('should be able to create a tester object correctly with a before all function', async function(){
         var create = function(name){
             this.payload = name; // must have the payload object
             this.name = name;
@@ -117,15 +118,15 @@ describe('base_tester constructor',function(){
         var firstPayload = baseTester.create(firstString);
         expect(firstPayload).to.equal(firstString);
         expect(baseTester.payloads.length).to.equal(1);
-        expect(baseTester.verify(firstString+secondString).length).to.equal(1); //expect it to find one error
-        expect(baseTester.verify("foobar").length).to.equal(0); //expect it to find none
+        expect((await baseTester.verify(firstString+secondString)).length).to.equal(1); //expect it to find one error
+        expect((await baseTester.verify("foobar")).length).to.equal(0); //expect it to find none
 
         var secondPayload = baseTester.create(secondString);
         expect(secondPayload).to.equal(secondString);
         expect(baseTester.payloads.length).to.equal(2);
-        expect(baseTester.verify(firstString+secondString).length).to.equal(2); //expect it to find two errors
-        expect(baseTester.verify("adsfadsfadsfads"+firstString).length).to.equal(1); //expect it to find one errors
-        expect(baseTester.verify("foobar").length).to.equal(0); //expect it to find none
+        expect((await baseTester.verify(firstString+secondString)).length).to.equal(2); //expect it to find two errors
+        expect((await baseTester.verify("adsfadsfadsfads"+firstString)).length).to.equal(1); //expect it to find one errors
+        expect((await baseTester.verify("foobar")).length).to.equal(0); //expect it to find none
         
         baseTester.clear();
         expect(baseTester.payloads.length).to.equal(0);

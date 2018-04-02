@@ -7,48 +7,32 @@ Useful tools to help you turn integration tests into security tests.
 
 To add it to your project run:
 
-```npm install <INSERT FINAL NAME OF NPM PACKAGE HERE>```
+```npm install --save-dev integrated-security```
 
 ## Use
 
 ### XSS
 
-### Angular Injection
+``` 
+//require the xss module
+var xss = require('integrated-security').xss
 
-### XXE
+//in your before each statement
 
-### SQL Injection
+xss.reset(); // This clears what the xss injector is looking for
 
-### Programmable Proxy
+//inside your test, create your payload
 
-### Passive Tools
+var username = xss.create("myName");
 
-#### Cookies
+//after using the payload as part of the test, verify the value by passing in the web driver object
 
-#### 
+// await syntax:
 
-1. After installing...
+var results = await xss.verify(webDriver)
 
-# Learn how to use as part of security testing
+// promise syntax
 
-The test code of this project includes examples on how to use this to help fin
-
-## Setup 
-
-Requirements: 
-* NodeJS (LTS Version 8.11.1) 
-* Chrome (Version  >= 64.0.3282.0)
-* Git
-
-1. First, clone the repository with:
-```git clone <FINAL REPO DIRECTORY HERE>```
-
-2. Then change to the cloned directory and run:
-```npm install```
-
-3. To verify that your install worked, run:
-
-```npm run integrationTest```
-If your install is successful, you should see it run through the integration tests and a chrome driver window should pop up. 
-
-## Workshop
+xss.verify(webDriver).then(function(results){ 
+    //Throw any assertions you want here based on the results
+});
