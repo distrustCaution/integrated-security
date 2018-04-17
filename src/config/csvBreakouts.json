@@ -7,6 +7,10 @@
         "start": "=",
         "end":""
     },
+    "equalsWithQuotes":{
+        "start": "\"=",
+        "end":"\""
+    },
     "plus":{
         "start": "+",
         "end":""

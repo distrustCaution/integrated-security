@@ -52,13 +52,38 @@ describe('base_tester helper functions', function(){
 
     });
 
-    it('should handle usename nicely', function(){
+    it('should handle usename nicely without defaults', function(){
+
         expect(base_tester.useNameHandler(undefined)).to.equal(true);
         expect(base_tester.useNameHandler(null)).to.equal(true);
         expect(base_tester.useNameHandler(true)).to.equal(true);
         expect(base_tester.useNameHandler(false)).to.equal(false);
         expect(base_tester.useNameHandler(1)).to.equal(true);
         expect(base_tester.useNameHandler(0)).to.equal(false);
+        
+    });
+
+    it('should handle usename nicely defaulting to true', function(){
+        
+        expect(base_tester.useNameHandler(undefined, true)).to.equal(true);
+        expect(base_tester.useNameHandler(null, true)).to.equal(true);
+        expect(base_tester.useNameHandler(true, true)).to.equal(true);
+        expect(base_tester.useNameHandler(false, true)).to.equal(false);
+        expect(base_tester.useNameHandler(1, true)).to.equal(true);
+        expect(base_tester.useNameHandler(0, true)).to.equal(false);
+        
+    });
+
+
+    it('should handle usename nicely defaulting to false', function(){
+        
+        expect(base_tester.useNameHandler(undefined, false)).to.equal(false);
+        expect(base_tester.useNameHandler(null, false)).to.equal(false);
+        expect(base_tester.useNameHandler(true, false)).to.equal(true);
+        expect(base_tester.useNameHandler(false, false)).to.equal(false);
+        expect(base_tester.useNameHandler(1, false)).to.equal(true);
+        expect(base_tester.useNameHandler(0, false)).to.equal(false);
+        
     });
 
 });

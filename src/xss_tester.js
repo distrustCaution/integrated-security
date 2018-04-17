@@ -40,6 +40,12 @@ function xssTest(name,breakout,useName,maxLength,basePayload){
 var getLogs = async function(driver){
     return await driver.manage().logs().get(webdriver.logging.Type.BROWSER);
 }
+/**
+ * 
+ * @param {xssTest} item - The xss payload
+ * @param {Array of WebDriverLogs} logs 
+ * @returns {boolean}
+ */
 
 var verifyXss = async function(item, logs){
     if(!logs || !logs.length) return false; // if no logs, there is no issue to be found
