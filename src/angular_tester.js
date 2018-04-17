@@ -10,7 +10,7 @@ var buildPayload = function(num){
 
 var angularInjection = function(name, breakout, useName, maxLength, maxNumLength){
     this.name = name ? name : base.randomString(maxLength);
-    if(!maxNumLength) maxNumLength = 2; // usually use 2 digit numbers
+    if(!maxNumLength) maxNumLength = 3; // usually use 3 digit numbers
     this.number = base.numHash(this.name, maxNumLength);
     this.searchText = (this.number * this.number).toString();
     

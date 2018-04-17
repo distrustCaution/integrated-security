@@ -1,0 +1,22 @@
+{
+    "standard":{
+        "start": "=",
+        "end":""
+    },
+    "equals":{
+        "start": "=",
+        "end":""
+    },
+    "plus":{
+        "start": "+",
+        "end":""
+    },    
+    "at":{
+        "start": "@",
+        "end":""
+    },
+    "minus":{
+        "start": "-",
+        "end":""
+    }
+}

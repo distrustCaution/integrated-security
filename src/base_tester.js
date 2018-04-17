@@ -136,11 +136,14 @@ baseTester.breakoutConfigHandler = function(breakout, config){
 
 /**
  * Helper function that turns garbage into a true boolean 
- * @param {*=} useName 
+ * @param {*=} useName
+ * @param {boolean?} ifNull - If what it should default to if null, true by default
  */
-baseTester.useNameHandler = function(useName){
+baseTester.useNameHandler = function(useName,ifNull){
+    if(ifNull == null) ifNull = true; // true by default
+
     if(useName == null){
-        return true; //use it by default
+        return ifNull; //use it by default
     } else {
        return useName ? true : false; //so garbage becomes a boolean
     }
